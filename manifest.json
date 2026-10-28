@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "SiteBlueprint",
+  "short_name": "SiteBlueprint",
+  "version": "0.3.0",
+  "author": "Swapnil Das",
+  "description": "Scan any website and get a master prompt to rebuild its frontend (animations included) plus backend docs. By Swapnil Das.",
+  "icons": { "16": "icon16.png", "48": "icon48.png", "128": "icon128.png" },
+  "permissions": ["activeTab", "scripting", "storage", "sidePanel", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "side_panel": { "default_path": "sidepanel.html" },
+  "action": { "default_title": "SiteBlueprint — click to open", "default_icon": { "16": "icon16.png", "48": "icon48.png" } },
+  "content_scripts": [
+    { "matches": ["<all_urls>"], "js": ["hook.js"], "run_at": "document_start", "world": "MAIN" },
+    { "matches": ["<all_urls>"], "js": ["content.js"], "run_at": "document_start" }
+  ]
+}

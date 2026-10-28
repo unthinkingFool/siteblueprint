@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SiteBlueprint</title>
+<link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+<header>
+  <div>
+    <h1>SiteBlueprint</h1>
+    <p class="by">by Swapnil Das</p>
+  </div>
+  <button id="manual" class="ghost">Open manual</button>
+</header>
+<p id="page" class="page">Current page: none</p>
+
+<section class="step" id="s1">
+  <h2><span class="n">1</span>Connect a free AI key <span id="s1badge" class="badge" hidden></span></h2>
+  <div id="s1body">
+    <label>Provider
+      <select id="provider"></select>
+    </label>
+    <label>API key
+      <span class="keyrow">
+        <input id="apiKey" type="password" autocomplete="off" spellcheck="false" placeholder="Paste your key here">
+        <button id="eye" type="button" class="ghost">Show</button>
+      </span>
+    </label>
+    <div class="two">
+      <button id="getKey">Get a free key</button>
+      <button id="saveCfg" class="primary">Test &amp; save</button>
+    </div>
+    <details>
+      <summary>Advanced</summary>
+      <label>Base URL <input id="baseUrl"></label>
+      <label>Model <input id="model"></label>
+      <div class="two">
+        <label>Max input chars per call <input id="maxIn" type="number" min="3000" step="1000"></label>
+        <label>Max output tokens <input id="maxOut" type="number" min="500" step="250"></label>
+      </div>
+    </details>
+  </div>
+  <button id="change" class="ghost" hidden>Change key or provider</button>
+</section>
+
+<section class="step" id="s2">
+  <h2><span class="n">2</span>Scan the website</h2>
+  <p class="small">Open the website you want in the current tab, then press the button.</p>
+  <label class="chk"><input type="checkbox" id="reload" checked> Reload the page first (recommended, captures every network call)</label>
+  <button id="scan" class="primary">Scan this page</button>
+</section>
+
+<section class="step" id="s3">
+  <h2><span class="n">3</span>Create your files</h2>
+  <button id="all" class="primary">Scan and make everything</button>
+  <div class="two">
+    <button id="genFe">Master prompt only</button>
+    <button id="genBe">Backend docs only</button>
+  </div>
+  <progress id="bar" max="1" value="0" hidden></progress>
+  <button id="cancel" class="ghost" hidden>Cancel</button>
+</section>
+
+<p id="status" role="status"></p>
+
+<nav class="tabs" role="tablist">
+  <button data-tab="frontend" class="on">Master prompt</button>
+  <button data-tab="backend">Backend docs</button>
+  <button data-tab="tech">Tech stack</button>
+  <button data-tab="raw">Raw scan</button>
+</nav>
+<p id="tabHint" class="small"></p>
+<div class="bar"><button id="copy">Copy</button><button id="dl">Download</button><span id="size"></span></div>
+<pre id="out"></pre>
+<footer>Made by Swapnil Das · SiteBlueprint v0.3.0</footer>
+<script src="sidepanel.js"></script>
+</body>
+</html>
